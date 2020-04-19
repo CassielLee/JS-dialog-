@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0"
+    />
+    <title>十年珠峰、专注前端</title>
+    <!-- IMPORT CSS -->
+    <link rel="stylesheet" href="dialogplugin.css" />
+  </head>
+
+  <body>
+    <button id="submit">点我测试</button>
+    <button id="submit2">点我测试</button>
+
+    <div id="dialog">
+      <p>这里是dialog插件哟~</p>
+      <a href="">哈哈</a>
+    </div>
+
+    <!-- IMPORT JS -->
+    <script src="dialogplugin.js"></script>
+    <script>
+      let dlog1 = dialogplugin({
+        // template: 'dialog插件可以直接传内容',
+        template: document.querySelector("#dialog"),
+        title: "系统温馨提示",
+        buttons: [
+          {
+            text: "确定",
+            click() {
+              this.close();
+            },
+          },
+          {
+            text: "取消",
+            click() {
+              this.close();
+            },
+          },
+        ],
+        oninit() {
+          console.log(1);
+        },
+        onopen() {
+          console.log(2);
+        },
+        onclose() {
+          console.log(3);
+        },
+      });
+
+      submit.onclick = function () {
+        messageplugin("这里是我写的message插件哟~");
+        /* messageplugin({
+				message: 'message传配置项',
+				duration: 1000,
+				type: 'success',
+				onclose() {
+					console.log('我关闭拉');
+				}
+			}); */
+      };
+
+      submit2.onclick = function () {
+        dlog1.open();
+      };
+    </script>
+  </body>
+</html>
